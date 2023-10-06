@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import set from "../assets/setting 1.png"
 import Dash from "../assets/dash.png"
 import Fee from "../assets/fee.png"
@@ -29,11 +29,11 @@ import { createRef } from 'react'
 const Dashboard = () => {
 
     // for Pie
-    const data = ["63%", "25%", "11%"]
-    const modes = ["online", "cash", "cheque"]
+    const data = ["34.41%", "47.35%", "15%",'3.24%']
+    const modes = ["online", "cash", "cheque","DD"]
     const bg = ['#4318FF',
         '#6AD2FF',
-        '#EFF4FB',]
+        '#EFF4FB',"#be29ec"]
 
 
     const StyledDiv = styled.div`
@@ -86,6 +86,26 @@ const maximizeSidebar=()=>{
     }
     setfirst(1)
 }
+const [sumFine, setsumFine] = useState(0)
+
+    useEffect(() => {
+      
+        fetch("https://ediviron-nestjs-api.vercel.app/total-fine") .then((response) => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then((data) => {
+     setsumFine(data["totalSum"])
+    
+    })
+    .catch((error) => {
+      console.error('Error fetching data:', error);
+    });
+     
+    }, [])
+    
 
     return (
         <div className="con-dash ">
@@ -210,7 +230,7 @@ const maximizeSidebar=()=>{
                             </div>
                             <div className="qt">
                                 <p>Fine collected till date</p>
-                                <h2>₹11.20L</h2>
+                                <h2>₹{sumFine}</h2>
                             </div>
 
                         </div>
