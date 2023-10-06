@@ -1,4 +1,5 @@
 
+
 .con-dash{
 width: 100vw;
 overflow-x: hidden;
@@ -421,11 +422,52 @@ th {
     font-size: medium;
     font-weight: 700;
 }
+#toggle{
+    position: absolute;
+    left: 5%;
+    z-index: 3;
+    top: 95%;
+    scale: 1.5;
+}
 
+.toggle{
+   width: max-content;
 
+   padding: 15px;
+}
+.toggle .sidebar{
+   
+    width: 100%;
+}
+.toggle .sidebar a strong,.sidebar a p,.sidebar a .down,.sidebar a .for{
+    display: none;
+}
+.toggle .sidebar a{
+    width: max-content; 
+}
+.toggle .sidebar img{
+    scale: 1.2;
+}
+.toggle  .top strong{
+    display: none;
+}
+.toggle .top{
+    position: relative;
+}
 @media screen and (max-width:700px) {
     .main-dash{
-        padding-left: 15%;
+        width: 100vw;
+        padding-left: 0;
+    }
+    .main-box{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100vw;
+        justify-content: center;
+        align-items: center;
+        margin-left: 0;
+        padding-left: 0;
     }
     .sidebar a strong,.sidebar a p,.sidebar a .down,.sidebar a .for{
         display: none;
@@ -433,11 +475,15 @@ th {
     .sidebar img{
         scale: 1.2;
     }
+    .toggle{
+        display: none;
+    }
     
     .sidebar a{
         width: max-content;
     }
     aside{
+        z-index: 3;
         width: max-content;
     }
     .sidebar{
@@ -479,17 +525,21 @@ th {
         width: 100%;
     }
     .con-bar-chart{
-        width: max-content;
+        width: 100%;;
         gap: 10px;
     }
     .data-charts{
         width: 100%;
         display: flex;
         gap: 20px;
+        
         flex-direction: column;
+        position: relative;
     }
     .pie-chart{
-        width: 100%;
+        padding-top: 10px;
+        width: 95%;
+        margin: auto;
     }
     
     .box-disbursals td{
@@ -500,11 +550,46 @@ th {
         width: max-content;
     }
     .bar-chart{
-        gap: 10px;
+        gap: 5px;
 
     }
     .bar-mon{
         width: 20px;
         border-radius: 5px;
+    }
+    .con-qts{
+        width: 95%;
+        gap: 10px;
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        padding: 0;
+        margin: auto;
+    }
+    .qt{
+        padding: 10px;
+    }
+    .col-earns{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+       flex-direction: column;
+        width:95%;
+        justify-content: center;
+        padding: 0;
+        height: max-content;
+       
+    }
+    .col-earn {
+        margin-left: 10px;
+        width: max-content;
+        
+    }
+    .col-earn .data{
+        
+        width: max-content;
+    }
+    
+    .line{
+        display: none;
     }
 }

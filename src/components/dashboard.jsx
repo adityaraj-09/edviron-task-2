@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React, { useState } from 'react'
 import set from "../assets/setting 1.png"
 import Dash from "../assets/dash.png"
 import Fee from "../assets/fee.png"
@@ -15,6 +15,8 @@ import { GiDatabase } from "react-icons/gi"
 import styled from 'styled-components';
 import { AiOutlineArrowUp } from "react-icons/ai"
 import { AiOutlineArrowDown } from "react-icons/ai"
+import { ImCancelCircle } from "react-icons/im"
+import { ImEnlarge } from "react-icons/im"
 import Check from "../assets/check_circle.png"
 import pend from "../assets/cir_pend.png"
 import Img from "../assets/img.png"
@@ -22,6 +24,8 @@ import Img from "../assets/img.png"
 import "./dashboard.css"
 import PieChart from './piechart'
 import Bar from './bar'
+import { useRef } from 'react'
+import { createRef } from 'react'
 const Dashboard = () => {
 
     // for Pie
@@ -63,21 +67,37 @@ const dis=[
     {Date:"July 08,2023",Amount:"₹5,03,123",Status:"Successful"},
     {Date:"July 09,2023",Amount:"₹5,03,123",Status:"Successful"}
 ]
-
+const togglesidebar =createRef();
+const  [first, setfirst] = useState(1)
 const minimizeSidebar=()=>{
+    const asideElement=togglesidebar.current
     
+    
+    if(first==1){
+        asideElement.classList.add("toggle")       
+    }
+    setfirst(2)
+   
 };
+const maximizeSidebar=()=>{
+    const asideElement=togglesidebar.current
+    if(first==2){
+        asideElement.classList.remove("toggle")
+    }
+    setfirst(1)
+}
 
     return (
         <div className="con-dash ">
             <div className="box-dash">
 
-                <aside>
+                <aside ref={togglesidebar}>
                     <div className="top">
 
                         <img src={set} alt="" />
                         <strong>Edviron</strong>
-                        <IoIosArrowForward onClick={minimizeSidebar}/>
+                       
+                        
 
 
                     </div>
@@ -126,6 +146,9 @@ const minimizeSidebar=()=>{
 
                     </div>
                 </aside>
+                {
+                            first==1?<ImCancelCircle onClick={minimizeSidebar} id="toggle"/>:<ImEnlarge onClick={maximizeSidebar} id="toggle"/>
+                        }
                 <main className='main-dash'>
                     <div className="main-box">
                         <h2>DAV PUBLIC SCHOOL, BHILAI</h2>
