@@ -224,8 +224,9 @@ const maximizeSidebar=()=>{
                                 {
                                     months.map((mon,i)=>{
                                         return(
-                                            <div className="bar-mon">
-                                            <Bar height={barData[i]}/>
+                                            <div className="bar-mon" >
+                                                <div className="hover">{barData[i]}%</div>
+                                            <Bar height={barData[i]} className="s-bar"/>
                                             <div className="mon">{mon}</div>
                                         </div>
                                         )

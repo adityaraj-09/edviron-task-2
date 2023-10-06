@@ -265,6 +265,7 @@ aside .top{
 .bar-mon{
     height: 230px;
     display: flex;
+    position: relative;
     width: 36px;
     gap: 10px;
     flex-direction:column ;
@@ -400,6 +401,32 @@ th {
     color: #A3AED0;font-weight: 400;
     
 }
+.hover{
+    display: none;
+}
+.bar-mon:hover .hover{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 3px;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0px;
+}
+.hover::after{
+    content: "";
+    height: 12px;
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 12px;
+    
+    position: absolute;
+    bottom: -5px;
+    border-radius: 3px;
+    transform: rotate(45deg);
+}
  
 
 .box-admin  td {
@@ -407,6 +434,7 @@ th {
     text-align: justify;
     color: #2B3674;
     font-size: medium;
+
     font-weight: 700;
     
 }
@@ -426,6 +454,7 @@ th {
     position: absolute;
     left: 5%;
     z-index: 3;
+    cursor: pointer;
     top: 95%;
     scale: 1.5;
 }
@@ -439,7 +468,7 @@ th {
    
     width: 100%;
 }
-.toggle .sidebar a strong,.sidebar a p,.sidebar a .down,.sidebar a .for{
+.toggle .sidebar a strong,.toggle .sidebar a p,.toggle .sidebar a .down,.toggle .sidebar a .for{
     display: none;
 }
 .toggle .sidebar a{
