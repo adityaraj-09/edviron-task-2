@@ -87,6 +87,7 @@ const maximizeSidebar=()=>{
     setfirst(1)
 }
 const [sumFine, setsumFine] = useState(0)
+const [students, setstudents] = useState(0)
 
     useEffect(() => {
       
@@ -103,6 +104,21 @@ const [sumFine, setsumFine] = useState(0)
     .catch((error) => {
       console.error('Error fetching data:', error);
     });
+
+    fetch("https://ediviron-nestjs-api.vercel.app/total-students") .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then((data) => {
+       setstudents(data["no_of_students"])
+      
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      });
+
      
     }, [])
     
@@ -218,7 +234,7 @@ const [sumFine, setsumFine] = useState(0)
                         <div className="con-qts">
                             <div className="qt">
                                 <p>students</p>
-                                <h2>1,049</h2>
+                                <h2>{students}</h2>
                             </div>
                             <div className="qt">
                                 <p>sections</p>
